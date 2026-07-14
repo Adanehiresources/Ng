@@ -80,38 +80,6 @@ nav {
   transition: all 0.3s ease;
 }
 
-/* RESPONSIVE MOBILE NAV BREAKPOINT */
-@media (max-width: 768px) {
-  .hamburger {
-    display: flex; /* Show hamburger icon on mobile */
-  }
-
-  .nav-container {
-    position: fixed;
-    top: 51px; /* Positions drawer right below the nav bar container */
-    right: -100%; /* Perfectly hides the panel off-screen to the right */
-    width: 250px;
-    height: calc(100vh - 51px);
-    background-color: var(--dark);
-    flex-direction: column;
-    padding: 40px 20px;
-    gap: 30px;
-    transition: right 0.4s ease-in-out;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-  }
-
-  /* Triggered by your JavaScript classList.toggle('active') */
-  .nav-container.active {
-    right: 0; 
-  }
-
-  .nav-link {
-    font-size: 1.2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 10px;
-  }
-}
-
 /* ==========================================
    3. HERO HEADER SECTION
    ========================================== */
@@ -123,18 +91,24 @@ header {
 }
 
 .header-content {
-  max-width: 800px;
+  max-width: 900px; /* Widened slightly to give the banner breathing room */
   margin: 0 auto;
 }
 
-/* Enlarged Brand Sub-title */
+/* Wide, Massive Banner Style for Brand Title */
 .brand-sub {
-  font-size: 1.5rem;          /* Enlarged for greater emphasis */
-  letter-spacing: 4px;        /* Added elegant spacing between letters */
-  color: var(--secondary);    /* Accent light blue color */
-  font-weight: 800;           /* Extra bold weight */
-  margin-bottom: 15px;
-  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  font-size: 2.5rem;             /* Massive text size */
+  font-weight: 900;              /* Ultra-bold */
+  color: var(--secondary);       /* Vibrant accent blue */
+  letter-spacing: 6px;           /* Wide structural tracking */
+  text-transform: uppercase;     /* Keeps it clean in all-caps */
+  margin-bottom: 25px;           /* Generous spacing underneath */
+  padding: 15px 0;
+  border-top: 2px solid rgba(0, 180, 216, 0.3);    /* Subtle framing line top */
+  border-bottom: 2px solid rgba(0, 180, 216, 0.3); /* Subtle framing line bottom */
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);      /* Makes it pop off the background */
 }
 
 .logo {
@@ -342,4 +316,49 @@ footer p {
   width: 32px;
   height: 32px;
   fill: currentColor;
+}
+
+/* ==========================================
+   8. RESPONSIVE MEDIA QUERIES (MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+  /* Navigation adjustments */
+  .hamburger {
+    display: flex; /* Show hamburger icon on mobile */
+  }
+
+  .nav-container {
+    position: fixed;
+    top: 51px; /* Positions drawer right below the nav bar container */
+    right: -100%; /* Perfectly hides the panel off-screen to the right */
+    width: 250px;
+    height: calc(100vh - 51px);
+    background-color: var(--dark);
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 30px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+  }
+
+  /* Triggered by your JavaScript classList.toggle('active') */
+  .nav-container.active {
+    right: 0; 
+  }
+
+  .nav-link {
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 10px;
+  }
+
+  /* Responsive Banner scaling for mobile viewports */
+  .brand-sub {
+    font-size: 1.6rem;   /* Responsively shrinks text on mobile screens */
+    letter-spacing: 3px; /* Slightly tighter text tracking on mobile */
+  }
+
+  .logo {
+    font-size: 2.5rem;
+  }
 }
