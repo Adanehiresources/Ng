@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Adanehi Resources</title>
+    
+    <style>
+        /* ==========================================
+           1. GLOBAL VARIABLES & RESET
+           ========================================== */
+        :root {
+            --primary: #0052cc;      /* Deep tech blue */
+            --secondary: #00b4d8;    /* Vibrant accent blue */
+            --dark: #121824;         /* Rich dark background */
+            --light: #f8f9fa;        /* Clean light grey */
+            --text: #333333;         /* Dark grey text */
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 80px; /* Space for fixed navigation bar */
+        }
+
+        /* ==========================================
+           2. NAVIGATION BAR & HAMBURGER
+           ========================================== */
+        nav {
+            background-color: var(--dark);
+            padding: 15px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+
+        /* Hamburger icon */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--white);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-container {
+                position: fixed;
+                top: 51px;
+                right: -100%;
+                width: 250px;
+                height: calc(100vh - 51px);
+                background-color: var(--dark);
+                flex-direction: column;
+                padding: 40px 20px;
+                gap: 30px;
+                transition: right 0.4s ease-in-out;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            }
+
+            .nav-container.active {
+                right: 0;
+            }
+
+            .nav-link {
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+                padding-bottom: 10px;
+            }
+        }
+
+        /* ==========================================
+           3. ABOUT HERO BANNER
+           ========================================== */
+        .about-hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ==========================================
+           4. MAIN CONTENT SECTIONS
+           ========================================== */
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .about-text h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .about-text h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            margin-top: 8px;
+        }
+
+        .about-text p {
+            color: #555;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
+        }
+
+        .about-graphic {
+            background: linear-gradient(135deg, rgba(0, 82, 204, 0.1) 0%, rgba(0, 180, 216, 0.1) 100%);
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 2px dashed var(--secondary);
+        }
+
+        .stat-box {
+            margin-bottom: 25px;
+        }
+
+        .stat-box:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-top: 5px;
+        }
+
+        /* Core Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--primary);
+        }
+
+        .value-card h3 {
+            color: var(--dark);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .value-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-section {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ==========================================
+           5. FOOTER
+           ========================================== */
+        footer {
+            background-color: #0b0f19;
+            color: #778296;
+            text-align: center;
+            padding: 30px 5%;
+            font-size: 0.9rem;
+            margin-top: 80px;
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-container" id="navMenu">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="index.html#programs" class="nav-link">Programs</a>
+            <a href="about.html" class="nav-link">About</a>
+            <a href="index.html#gallery" class="nav-link">Gallery</a>
+            <a href="registration.html" class="nav-link">Registration</a>
+            <a href="index.html#venue" class="nav-link">Venue & Contact</a>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <h1>About Adanehi Resources</h1>
+        <p>Bridging the gap between foundational education and cutting-edge digital literacy.</p>
+    </section>
+
+    <main class="container">
+        
+        <section class="about-section">
+            <div class="about-text">
+                <h2>Our Mission</h2>
+                <p>At Adanehi Resources, we believe that every child and teenager deserves access to the tools, skills, and mentorship needed to navigate a digital-first world.</p>
+                <p>Based in Gonin Gora, Kaduna, our training centre offers hands-on, highly collaborative technology pathways. We focus on transforming passive consumers of technology into active creators, innovators, and problem-solvers.</p>
+            </div>
+            <div class="about-graphic">
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Hands-On Practical Learning</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Comprehensive Technical Pathways</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">Kaduna</div>
+                    <div class="stat-label">Suite 110, Treasure Mall Plaza</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 2rem; color: var(--dark);">Why Choose Us?</h2>
+                <p style="color: #666; max-width: 600px; margin: 10px auto 0 auto;">We design our summer technology programs around core principles that support long-term child development.</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Future-Proof Skills</h3>
+                    <p>Technology changes rapidly. We teach fundamental logical structures and computational principles that serve as a foundation for any future software program or platform.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Empathetic Mentorship</h3>
+                    <p>Our educators aren't just technical experts; they are patient instructors trained to work closely with kids and teenagers of all learning styles and skill levels.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Collaborative Culture</h3>
+                    <p>Great code is rarely written alone. We integrate team challenges and peer reviews to help students build essential social skills and teamwork capabilities.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Future-Proof Skills • Professional Mentorship • Collaborative Learning</p>
+        <p class="copyright">© 2026 Adanehi Resources. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+
+            if (hamburger && navMenu) {
+                // Open/Close menu drawer on burger click
+                hamburger.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    navMenu.classList.toggle('active');
+                });
+
+                // Auto-close menu drawer when clicking navigation links
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                    });
+                });
+
+                // Close drawer if clicking anywhere outside of the menu
+                document.addEventListener('click', (event) => {
+                    if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+  </html>
+  
