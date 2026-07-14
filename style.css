@@ -1,0 +1,26 @@
+/* Glassmorphism utility card definition */
+.glass-card {
+    background: rgba(15, 15, 15, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(212, 175, 55, 0.5);
+    box-shadow: 0 10px 40px 0 rgba(212, 175, 55, 0.1);
+}
+
+/* Typing animation layout placeholder logic */
+.typing-text {
+    border-right: 2px solid #D4AF37;
+    white-space: nowrap;
+    animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+    from, to { border-color: transparent }
+    50% { border-color: #D4AF37; }
+}
