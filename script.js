@@ -3,9 +3,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const navMenu = document.getElementById('navMenu');
 
     if (hamburger && navMenu) {
-        // Handle hamburger menu interactions
+        // Toggle mobile drawer layout open/close on click
         hamburger.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevents bubbling issues
+            event.stopPropagation(); // Prevents immediate closing from bubbling to document
             navMenu.classList.toggle('active');
         });
 
@@ -16,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        // Close menu if user clicks anywhere outside the navigation drawer
+        // Close menu if user clicks anywhere outside the navigation drawer panel
         document.addEventListener('click', (event) => {
             if (!navMenu.contains(event.target) && !hamburger.contains(event.target)) {
                 navMenu.classList.remove('active');
             }
         });
     } else {
-        console.error("Navigation elements not found! Make sure element IDs match.");
+        console.error("Navigation drawer elements missing. Check ID configurations.");
     }
 });
