@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adanehi Resources | August Summer Tech Bootcamp 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            light: '#F5D061',
+                            DEFAULT: '#D4AF37',
+                            dark: '#AA840A',
+                        },
+                        darkBg: '#0B0B0B',
+                        cardBg: 'rgba(25, 25, 25, 0.65)'
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-darkBg text-white font-sans overflow-x-hidden">
+
+    <header class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0 bg-black/70">
+            <video autoplay loop muted playsinline class="w-full h-full object-cover opacity-40">
+                <source src="assets/coding-video.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+            <h1 class="text-gold font-bold tracking-widest text-xl md:text-2xl mb-2 tracking-wider">ADANEHI RESOURCES</h1>
+            <h2 class="text-4xl md:text-7xl font-bold mb-4 text-white">August Summer Tech Bootcamp <span class="text-gold">2026</span></h2>
+            <p class="text-lg md:text-2xl text-gray-300 mb-8">
+                <span class="typing-text">Learn. Build. Create. Succeed.</span><br>
+                <span class="text-sm md:text-lg text-gold-light">Become a Tech Professional This Summer.</span>
+            </p>
+            
+            <div id="countdown" class="flex justify-center gap-4 mb-8 text-center">
+                <div class="bg-black/50 border border-gold/30 p-3 rounded-lg min-w-[70px]">
+                    <span id="days" class="text-2xl md:text-4xl font-bold text-gold">00</span>
+                    <p class="text-xs text-gray-400">Days</p>
+                </div>
+                <div class="bg-black/50 border border-gold/30 p-3 rounded-lg min-w-[70px]">
+                    <span id="hours" class="text-2xl md:text-4xl font-bold text-gold">00</span>
+                    <p class="text-xs text-gray-400">Hrs</p>
+                </div>
+                <div class="bg-black/50 border border-gold/30 p-3 rounded-lg min-w-[70px]">
+                    <span id="minutes" class="text-2xl md:text-4xl font-bold text-gold">00</span>
+                    <p class="text-xs text-gray-400">Min</p>
+                </div>
+                <div class="bg-black/50 border border-gold/30 p-3 rounded-lg min-w-[70px]">
+                    <span id="seconds" class="text-2xl md:text-4xl font-bold text-gold">00</span>
+                    <p class="text-xs text-gray-400">Sec</p>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#register" class="bg-gold hover:bg-gold-dark text-black font-bold px-8 py-4 rounded-full transition duration-300 shadow-lg shadow-gold/20 transform hover:-translate-y-1">
+                    🚀 Enroll Now
+                </a>
+                <a href="#footer" class="border-2 border-gold text-gold hover:bg-gold hover:text-black font-bold px-8 py-4 rounded-full transition duration-300">
+                    📞 Contact Us
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12 bg-black border-y border-gold/20">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+                <p class="text-4xl md:text-5xl font-bold text-gold stat-counter" data-target="100">0</p>
+                <p class="text-gray-400 text-sm mt-2">Students Trained</p>
+            </div>
+            <div>
+                <p class="text-4xl md:text-5xl font-bold text-gold stat-counter" data-target="3">0</p>
+                <p class="text-gray-400 text-sm mt-2">Professional Courses</p>
+            </div>
+            <div>
+                <p class="text-4xl md:text-5xl font-bold text-gold"><i class="fa-solid fa-laptop-code"></i></p>
+                <p class="text-gray-400 text-sm mt-2">Practical Hands-on Training</p>
+            </div>
+            <div>
+                <p class="text-4xl md:text-5xl font-bold text-gold"><i class="fa-solid fa-award"></i></p>
+                <p class="text-gray-400 text-sm mt-2">Certificate of Completion</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="programs" class="py-20 max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl md:text-5xl font-bold text-center mb-12">Our Elite <span class="text-gold">Programs</span></h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+                <div>
+                    <div class="text-gold text-4xl mb-4"><i class="fa-solid fa-desktop"></i></div>
+                    <h3 class="text-xl font-bold mb-4 text-gold-light">Diploma in Computer Application</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Microsoft Word</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Excel & PowerPoint</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Access Database</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Internet & Email</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Printing & Scanning</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-2xl border border-gold/30 relative transform scale-105 shadow-xl shadow-gold/5 flex flex-col justify-between">
+                <div class="absolute -top-3 right-4 bg-gold text-black text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</div>
+                <div>
+                    <div class="text-gold text-4xl mb-4"><i class="fa-solid fa-code"></i></div>
+                    <h3 class="text-xl font-bold mb-4 text-gold-light">Coding Classes</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>HTML5 & CSS3</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>JavaScript (ES6+)</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Python Programming</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>PHP & MySQL Backend</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="glass-card p-8 rounded-2xl border border-white/10 flex flex-col justify-between">
+                <div>
+                    <div class="text-gold text-4xl mb-4"><i class="fa-solid fa-palette"></i></div>
+                    <h3 class="text-xl font-bold mb-4 text-gold-light">Website Design</h3>
+                    <ul class="space-y-2 text-gray-300 text-sm">
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Responsive UI/UX Layouts</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Version Control via GitHub</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Leveraging AI Developer Tools</li>
+                        <li><i class="fa-solid fa-check text-gold mr-2"></i>Live Website Deployment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="register" class="py-20 bg-black/40 border-t border-white/5">
+        <div class="max-w-3xl mx-auto px-4 glass-card p-8 md:p-12 rounded-3xl border border-gold/20">
+            <h2 class="text-3xl font-bold text-center mb-2">Secure Your <span class="text-gold">Seat</span></h2>
+            <p class="text-center text-gray-400 text-sm mb-8">Fill the form below to register for the August Summer Bootcamp</p>
+            
+            <form id="bootcampForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2 font-medium">Full Name</label>
+                        <input type="text" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2 font-medium">Phone Number</label>
+                        <input type="tel" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2 font-medium">Email Address</label>
+                    <input type="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2 font-medium">Select Course</label>
+                        <select required class="w-full bg-darkBg border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                            <option value="">Choose a Program...</option>
+                            <option value="diploma">Diploma in Computer Application</option>
+                            <option value="coding">Coding Classes</option>
+                            <option value="web-design">Website Design</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm text-gray-300 mb-2 font-medium">Preferred Session</label>
+                        <select required class="w-full bg-darkBg border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-gold transition">
+                            <option value="">Select Time Slot...</option>
+                            <option value="morning">Morning (9:00 AM – 12:00 PM)</option>
+                            <option value="afternoon">Afternoon (1:00 PM – 4:00 PM)</option>
+                            <option value="evening">Evening (4:30 PM – 6:30 PM)</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm text-gray-300 mb-2 font-medium">Upload Payment Receipt <span class="text-xs text-gray-500">(Optional for Bank Transfer)</span></label>
+                    <input type="file" accept="image/*,.pdf" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gold file:text-black hover:file:bg-gold-dark transition">
+                </div>
+                <button type="submit" class="w-full bg-gold hover:bg-gold-dark text-black font-bold py-4 rounded-lg mt-4 transition duration-300 tracking-wide uppercase">Submit Registration</button>
+            </form>
+        </div>
+    </section>
+
+    <a href="https://wa.me/2347062589594?text=Hello%20Adanehi%20Resources,%20I'm%20interested%20in%20the%20bootcamp." target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-2xl z-50 hover:scale-110 transition duration-300 flex items-center justify-center text-2xl group">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="absolute right-14 bg-black text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition whitespace-nowrap border border-white/10">Need Help? Chat With Us</span>
+    </a>
+
+    <footer id="footer" class="bg-black text-gray-400 py-12 border-t border-white/10 text-center">
+        <p class="mb-4">Treasure Mall Plaza, Suite 110 Federal Housing, Gonin Gora, Kaduna State.</p>
+        <p class="text-sm">Copyright &copy; 2026 Adanehi Resources. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+                      </html>
+                      
