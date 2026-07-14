@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Adanehi Resources Summer Program</title>
+    
+    <style>
+        /* ==========================================
+           1. RESET & VARIABLE PROPERTIES
+           ========================================== */
+        :root {
+            --primary: #0052cc;      /* Deep tech blue */
+            --secondary: #00b4d8;    /* Vibrant accent blue */
+            --dark: #121824;         /* Rich dark background */
+            --light: #f8f9fa;        /* Clean light grey */
+            --text: #333333;         /* Dark grey text */
+            --white: #ffffff;
+            --success: #25d366;      /* Success Green */
+            --error: #ff4d4d;        /* Error Red */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* ==========================================
+           2. REGISTRATION CARD LAYOUT
+           ========================================== */
+        .register-container {
+            background-color: var(--white);
+            width: 100%;
+            max-width: 550px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+        }
+
+        /* Back to Home Button */
+        .back-home {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+
+        .back-home:hover {
+            color: var(--secondary);
+        }
+
+        /* Header styling */
+        .reg-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .reg-header h1 {
+            color: var(--dark);
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .reg-header p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* ==========================================
+           3. FORM ELEMENT FIELDS
+           ========================================== */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 2px solid #e1e4e8;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.15);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #0043a4;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        /* Feedback Message Box */
+        .alert-box {
+            display: none;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .alert-success {
+            display: block;
+            background-color: rgba(37, 211, 102, 0.15);
+            color: #128c3e;
+            border: 1px solid var(--success);
+        }
+
+        .alert-error {
+            display: block;
+            background-color: rgba(255, 77, 77, 0.1);
+            color: #cc0000;
+            border: 1px solid var(--error);
+        }
+
+        /* Responsive modifications */
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 30px 20px;
+            }
+            .reg-header h1 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <a href="index.html" class="back-home">← Back to Main Page</a>
+
+        <div class="reg-header">
+            <h1>Join Our Program</h1>
+            <p>August Technology Skill-Building (Kids & Teens)</p>
+        </div>
+
+        <div id="alertBox" class="alert-box"></div>
+
+        <form id="regForm">
+            <div class="form-group">
+                <label for="studentName">Student's Full Name</label>
+                <input type="text" id="studentName" class="form-control" placeholder="John Doe" required>
+            </div>
+
+            <div class="form-group">
+                <label for="studentAge">Age</label>
+                <input type="number" id="studentAge" class="form-control" min="5" max="19" placeholder="e.g. 12" required>
+            </div>
+
+            <div class="form-group">
+                <label for="programPathway">Select Technical Pathway</label>
+                <select id="programPathway" class="form-control" required>
+                    <option value="" disabled selected>Choose a pathway...</option>
+                    <option value="digital-literacy">Digital Literacy Certification</option>
+                    <option value="software-engineering">Software Engineering Foundations</option>
+                    <option value="uiux-web">UI/UX & Web Development</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="parentName">Parent / Guardian Name</label>
+                <input type="text" id="parentName" class="form-control" placeholder="Guardian Name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="parentPhone">Parent Phone Number</label>
+                <input type="tel" id="parentPhone" class="form-control" placeholder="07062589594" required>
+            </div>
+
+            <button type="submit" class="submit-btn">Complete Registration</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("regForm");
+            const alertBox = document.getElementById("alertBox");
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault(); // Prevents page reload on submit
+
+                // Retrieve form values
+                const sName = document.getElementById("studentName").value.trim();
+                const sAge = document.getElementById("studentAge").value.trim();
+                const pathway = document.getElementById("programPathway").value;
+                const pName = document.getElementById("parentName").value.trim();
+                const pPhone = document.getElementById("parentPhone").value.trim();
+
+                // Simple safety validation check
+                if (!sName || !sAge || !pathway || !pName || !pPhone) {
+                    showAlert("Please fill in all details accurately.", "alert-error");
+                    return;
+                }
+
+                // Show a clean visual confirmation message to the user
+                showAlert(`Success! ${sName} has been registered for the program. We will contact you at ${pPhone} shortly!`, "alert-success");
+
+                // Clear the form fields after successful sign-up
+                form.reset();
+            });
+
+            // Helper function to show messages beautifully
+            function showAlert(message, className) {
+                alertBox.textContent = message;
+                alertBox.className = "alert-box " + className; // Applies style class dynamically
+                
+                // Automatically scroll up to show the alert message
+                alertBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
+            }
+        });
+    </script>
+</body>
+          </html>
+          
