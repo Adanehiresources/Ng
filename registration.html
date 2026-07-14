@@ -43,7 +43,7 @@
         .register-container {
             background-color: var(--white);
             width: 100%;
-            max-width: 680px; /* Increased max-width slightly to accommodate program grid beautifully */
+            max-width: 680px; 
             border-radius: 16px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             padding: 40px 30px;
@@ -148,7 +148,7 @@
             user-select: none;
         }
 
-        /* Top border indicator on hover/select, matching the image */
+        /* Top border indicator on hover/select */
         .program-card::after {
             content: '';
             position: absolute;
@@ -173,14 +173,50 @@
             opacity: 0.7;
         }
 
-        /* Program Selection Active State */
+        /* Selected State Styling */
         .program-card.selected {
             border-color: var(--primary);
             box-shadow: 0 8px 16px rgba(0, 82, 204, 0.12);
+            background-color: #fafdff;
         }
 
         .program-card.selected::after {
             opacity: 1;
+        }
+
+        /* Selected Badge UI indicator */
+        .select-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #e1e4e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .program-card.selected .select-badge {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .select-badge::after {
+            content: '';
+            width: 6px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+            margin-bottom: 2px;
+            display: none;
+        }
+
+        .program-card.selected .select-badge::after {
+            display: block;
         }
 
         /* Icon Wrapper Design */
@@ -206,7 +242,7 @@
             fill: var(--primary);
         }
 
-        /* Program Text Typography (similar to the serif look in image) */
+        /* Program Text Typography */
         .program-title {
             font-family: 'Playfair Display', Georgia, Cambria, serif, sans-serif;
             font-size: 1.15rem;
@@ -214,19 +250,13 @@
             color: var(--dark);
             margin-bottom: 10px;
             line-height: 1.3;
+            padding-right: 20px; /* Leave space for selection badge */
         }
 
         .program-desc {
             font-size: 0.85rem;
             color: #666;
             line-height: 1.45;
-        }
-
-        /* Radio hidden helper */
-        .program-radio {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
         }
 
         /* Submit Button */
@@ -242,6 +272,10 @@
             cursor: pointer;
             transition: background-color 0.2s, transform 0.1s;
             margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
 
         .submit-btn:hover {
@@ -250,6 +284,13 @@
 
         .submit-btn:active {
             transform: scale(0.98);
+        }
+
+        /* WhatsApp icon on button */
+        .whatsapp-icon {
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
         }
 
         /* Feedback Message Box */
@@ -315,10 +356,11 @@
             </div>
 
             <div class="form-group">
-                <label>Select Program Pathway</label>
+                <label>Select Program Pathway(s) <span style="font-weight: normal; color: #666;">(You can select multiple)</span></label>
                 <div class="program-grid">
                     
-                    <div class="program-card" data-value="digital-literacy">
+                    <div class="program-card" data-value="Digital Literacy Certification">
+                        <div class="select-badge"></div>
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24"><path d="M20,18c1.1,0,1.99-0.9,1.99-2L22,6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></svg>
                         </div>
@@ -326,7 +368,8 @@
                         <p class="program-desc">Master essential workplace tools, computing fundamentals, and office productivity software.</p>
                     </div>
 
-                    <div class="program-card" data-value="computer-application">
+                    <div class="program-card" data-value="Diploma in Computer Application Package">
+                        <div class="select-badge"></div>
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24"><path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M19,19H5V5h14V19z M17,12h-4V8h-2v4H7v2h4v4h2v-4h4V12z"/></svg>
                         </div>
@@ -334,7 +377,8 @@
                         <p class="program-desc">Learn Ms Word, Excel, PowerPoint, and Corel Draw.</p>
                     </div>
 
-                    <div class="program-card" data-value="typing-skills">
+                    <div class="program-card" data-value="Master Typing Skills">
+                        <div class="select-badge"></div>
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M11,19.93C7.05,19.44,4,16.08,4,12c0-1,0.2-1.95,0.57-2.82L9,13.5v1c0,1.1,0.9,2,2,2V19.93z M18.57,16.57C18.13,15.66,17.15,15,16,15h-1v-3c0-0.55-0.45-1-1-1H9V9H7V7h2c0.55,0,1-0.45,1-1V5.5c2.48,0.76,4.5,2.78,5.26,5.26L14,12v2h2c1.1,0,2,0.9,2,2v0.57H18.57z"/></svg>
                         </div>
@@ -342,7 +386,8 @@
                         <p class="program-desc">At Adanehi Resources we help you master your typing skills, i.e. to type without looking at the keyboard with a typing speed of 30WPM.</p>
                     </div>
 
-                    <div class="program-card" data-value="web-design">
+                    <div class="program-card" data-value="Web Design">
+                        <div class="select-badge"></div>
                         <div class="icon-box">
                             <svg viewBox="0 0 24 24"><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></svg>
                         </div>
@@ -351,7 +396,6 @@
                     </div>
 
                 </div>
-                <input type="hidden" id="programPathway" name="programPathway" value="" required>
             </div>
 
             <div class="form-group">
@@ -364,7 +408,10 @@
                 <input type="tel" id="parentPhone" class="form-control" placeholder="07062589594" required>
             </div>
 
-            <button type="submit" class="submit-btn">Complete Registration</button>
+            <button type="submit" class="submit-btn">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.69 1.975 14.218.95 11.59.947c-5.444 0-9.867 4.373-9.87 9.802-.001 1.696.463 3.35 1.34 4.811L1.933 22.01l6.634-1.722c-1.536.837-3.111 1.258-4.72 1.259z"/></svg>
+                Complete Registration via WhatsApp
+            </button>
         </form>
     </div>
 
@@ -373,54 +420,88 @@
             const form = document.getElementById("regForm");
             const alertBox = document.getElementById("alertBox");
             const programCards = document.querySelectorAll(".program-card");
-            const hiddenProgramInput = document.getElementById("programPathway");
 
-            // Handle program card clicks
+            // Setup variables to store selected values
+            let selectedPrograms = [];
+
+            // Card multi-select handler
             programCards.forEach(card => {
                 card.addEventListener("click", () => {
-                    // Remove selected styling class from all cards
-                    programCards.forEach(c => c.classList.remove("selected"));
-                    
-                    // Assign class and set hidden form value for the clicked card
-                    card.classList.add("selected");
-                    hiddenProgramInput.value = card.getAttribute("data-value");
+                    const val = card.getAttribute("data-value");
+
+                    if (card.classList.contains("selected")) {
+                        // Deselect
+                        card.classList.remove("selected");
+                        selectedPrograms = selectedPrograms.filter(p => p !== val);
+                    } else {
+                        // Select
+                        card.classList.add("selected");
+                        selectedPrograms.push(val);
+                    }
                 });
             });
 
             form.addEventListener("submit", (event) => {
-                event.preventDefault(); // Prevents page reload on submit
+                event.preventDefault(); // Prevents page reload
 
                 // Retrieve form values
                 const sName = document.getElementById("studentName").value.trim();
                 const sAge = document.getElementById("studentAge").value.trim();
-                const pathway = hiddenProgramInput.value;
                 const pName = document.getElementById("parentName").value.trim();
                 const pPhone = document.getElementById("parentPhone").value.trim();
 
-                // Simple safety validation check
-                if (!sName || !sAge || !pathway || !pName || !pPhone) {
-                    showAlert("Please select a Program Pathway and fill in all details accurately.", "alert-error");
+                // Validate selection
+                if (selectedPrograms.length === 0) {
+                    showAlert("Please select at least one Program Pathway before proceeding.", "alert-error");
                     return;
                 }
 
-                // Format friendly pathway name for message output
-                const selectedText = document.querySelector(`.program-card[data-value="${pathway}"] .program-title`).textContent;
+                // Format friendly visual message list for WhatsApp
+                const programListString = selectedPrograms.map((prog, idx) => `  ${idx + 1}. ${prog}`).join("\n");
 
-                // Show a clean visual confirmation message to the user
-                showAlert(`Success! ${sName} has been registered for "${selectedText}". We will contact you at ${pPhone} shortly!`, "alert-success");
+                // WhatsApp Target Number Configuration
+                const whatsappTarget = "2347062589594"; // Format target number with country code
 
-                // Clear form fields and selection states
+                // Construct text format
+                const messageText = 
+`📝 *NEW SUMMER PROGRAM REGISTRATION*
+
+👤 *Student Details:*
+• *Name:* ${sName}
+• *Age:* ${sAge} years
+
+🏢 *Selected Program(s):*
+${programListString}
+
+👪 *Parent/Guardian Details:*
+• *Name:* ${pName}
+• *Phone:* ${pPhone}
+
+---
+_Sent via Adanehi Resources Registration Portal_`;
+
+                // URL Encode text safely
+                const encodedText = encodeURIComponent(messageText);
+                const whatsappUrl = `https://wa.me/${whatsappTarget}?text=${encodedText}`;
+
+                // Show success status indicator
+                showAlert(`Success! Opening WhatsApp to complete registration for ${sName}...`, "alert-success");
+
+                // Clear fields and selection style states
                 form.reset();
                 programCards.forEach(c => c.classList.remove("selected"));
-                hiddenProgramInput.value = "";
+                selectedPrograms = [];
+
+                // Redirect user to WhatsApp in a new tab
+                setTimeout(() => {
+                    window.open(whatsappUrl, "_blank");
+                }, 1000);
             });
 
             // Helper function to show messages beautifully
             function showAlert(message, className) {
                 alertBox.textContent = message;
-                alertBox.className = "alert-box " + className; // Applies style class dynamically
-                
-                // Automatically scroll up to show the alert message
+                alertBox.className = "alert-box " + className;
                 alertBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }
         });
