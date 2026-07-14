@@ -148,8 +148,26 @@
            ========================================== */
         .container {
             max-width: 1000px;
-            margin: 60px auto;
+            margin: 40px auto 60px auto; /* Slightly adjusted top margin for better spacing with button */
             padding: 0 20px;
+        }
+
+        /* Back to Home Button Link */
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-home:hover {
+            color: var(--secondary);
+            transform: translateX(-4px);
         }
 
         .about-section {
@@ -297,6 +315,7 @@
     </section>
 
     <main class="container">
+        <a href="index.html" class="back-home">← Back to Home Page</a>
         
         <section class="about-section">
             <div class="about-text">
@@ -378,5 +397,4 @@
         });
     </script>
 </body>
-  </html>
-  
+</html>
