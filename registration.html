@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register | Adanehi Resources Summer Program</title>
+    <title>Register | Adanehi Resources Registration Form</title>
     
     <style>
         /* ==========================================
            1. RESET & VARIABLE PROPERTIES
            ========================================== */
         :root {
-            --primary: #0052cc;      /* Deep tech blue */
-            --secondary: #00b4d8;    /* Vibrant accent blue */
-            --dark: #121824;         /* Rich dark background */
+            --primary: #f26522;      /* Adanehi Orange Accent */
+            --primary-dark: #d45217;
+            --dark: #1e1e1e;         /* Rich dark header */
             --light: #f8f9fa;        /* Clean light grey */
             --text: #333333;         /* Dark grey text */
             --white: #ffffff;
             --success: #25d366;      /* Success Green */
             --error: #ff4d4d;        /* Error Red */
+            --border-color: #d1d5db;
         }
 
         * {
@@ -28,7 +29,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            background: #121824;
             color: var(--text);
             min-height: 100vh;
             display: flex;
@@ -43,85 +44,180 @@
         .register-container {
             background-color: var(--white);
             width: 100%;
-            max-width: 680px; 
-            border-radius: 16px;
+            max-width: 760px; 
+            border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            padding: 40px 30px;
-            position: relative;
             overflow: hidden;
+            border: 4px solid var(--primary);
         }
 
-        .register-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(to right, var(--secondary), var(--primary));
+        /* Top Brand Banner matching the flyer */
+        .brand-banner {
+            background: var(--dark);
+            padding: 24px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--primary);
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
-        /* Back to Home Button */
+        .brand-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .brand-title h2 {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title span {
+            color: var(--primary);
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .form-badge-header {
+            background: var(--primary);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        /* Contact Details Header Bar */
+        .contact-strip {
+            background: #f1f3f5;
+            padding: 10px 30px;
+            font-size: 0.8rem;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e5e7eb;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-strip span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-body-content {
+            padding: 30px;
+        }
+
         .back-home {
             display: inline-block;
             color: var(--primary);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 600;
             margin-bottom: 20px;
             transition: color 0.2s;
         }
 
         .back-home:hover {
-            color: var(--secondary);
+            color: var(--primary-dark);
         }
 
-        /* Header styling */
-        .reg-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .reg-header h1 {
-            color: var(--dark);
-            font-size: 1.8rem;
+        .section-header-box {
+            background: var(--dark);
+            color: white;
+            padding: 8px 14px;
+            font-size: 0.85rem;
             font-weight: 800;
-            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            margin-top: 25px;
         }
 
-        .reg-header p {
-            color: #666;
-            font-size: 0.95rem;
+        .section-header-box:first-of-type {
+            margin-top: 0;
         }
 
         /* ==========================================
            3. FORM ELEMENT FIELDS
            ========================================== */
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 16px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--dark);
         }
 
         .form-control {
             width: 100%;
-            padding: 12px 16px;
-            font-size: 1rem;
-            border: 2px solid #e1e4e8;
-            border-radius: 8px;
+            padding: 10px 14px;
+            font-size: 0.95rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
             outline: none;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            background-color: #fff;
         }
 
         .form-control:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.15);
+            box-shadow: 0 0 0 3px rgba(242, 101, 34, 0.15);
+        }
+
+        .gender-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            height: 42px;
+        }
+
+        .radio-label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
         }
 
         /* ==========================================
@@ -129,15 +225,15 @@
            ========================================== */
         .program-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
         }
 
         .program-card {
             background: var(--white);
-            border: 2px solid #e1e4e8;
-            border-radius: 12px;
-            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
             cursor: pointer;
             position: relative;
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
@@ -148,51 +244,26 @@
             user-select: none;
         }
 
-        /* Top border indicator on hover/select */
-        .program-card::after {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            height: 4px;
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
-            background: var(--primary);
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
         .program-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0, 82, 204, 0.08);
+            box-shadow: 0 4px 12px rgba(242, 101, 34, 0.08);
             transform: translateY(-2px);
         }
 
-        .program-card:hover::after {
-            opacity: 0.7;
-        }
-
-        /* Selected State Styling */
         .program-card.selected {
             border-color: var(--primary);
-            box-shadow: 0 8px 16px rgba(0, 82, 204, 0.12);
-            background-color: #fafdff;
+            box-shadow: 0 4px 12px rgba(242, 101, 34, 0.15);
+            background-color: #fffaf7;
         }
 
-        .program-card.selected::after {
-            opacity: 1;
-        }
-
-        /* Selected Badge UI indicator */
         .select-badge {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            width: 20px;
-            height: 20px;
+            top: 10px;
+            right: 10px;
+            width: 18px;
+            height: 18px;
             border-radius: 50%;
-            border: 2px solid #e1e4e8;
+            border: 2px solid var(--border-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -206,8 +277,8 @@
 
         .select-badge::after {
             content: '';
-            width: 6px;
-            height: 10px;
+            width: 4px;
+            height: 8px;
             border: solid white;
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
@@ -219,59 +290,61 @@
             display: block;
         }
 
-        /* Icon Wrapper Design */
         .icon-box {
-            width: 42px;
-            height: 42px;
-            border-radius: 8px;
-            background-color: #f0f4fc;
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background-color: #fff1eb;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 16px;
-            transition: background-color 0.2s;
-        }
-
-        .program-card.selected .icon-box {
-            background-color: rgba(0, 82, 204, 0.1);
+            margin-bottom: 10px;
         }
 
         .icon-box svg {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             fill: var(--primary);
         }
 
-        /* Program Text Typography */
         .program-title {
-            font-family: 'Playfair Display', Georgia, Cambria, serif, sans-serif;
-            font-size: 1.15rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--dark);
-            margin-bottom: 10px;
-            line-height: 1.3;
-            padding-right: 20px; /* Leave space for selection badge */
+            margin-bottom: 4px;
+            line-height: 1.2;
+            padding-right: 15px; 
         }
 
         .program-desc {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: #666;
-            line-height: 1.45;
+            line-height: 1.35;
         }
 
-        /* Submit Button */
+        .declaration-box {
+            background: #f8f9fa;
+            border: 1px solid #e5e7eb;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
         .submit-btn {
             width: 100%;
             background-color: var(--primary);
             color: var(--white);
             border: none;
-            border-radius: 8px;
+            border-radius: 6px;
             padding: 14px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             cursor: pointer;
             transition: background-color 0.2s, transform 0.1s;
-            margin-top: 15px;
+            margin-top: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -279,27 +352,25 @@
         }
 
         .submit-btn:hover {
-            background-color: #0043a4;
+            background-color: var(--primary-dark);
         }
 
         .submit-btn:active {
             transform: scale(0.98);
         }
 
-        /* WhatsApp icon on button */
         .whatsapp-icon {
             width: 20px;
             height: 20px;
             fill: #ffffff;
         }
 
-        /* Feedback Message Box */
         .alert-box {
             display: none;
             padding: 12px;
             border-radius: 6px;
             text-align: center;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 20px;
         }
@@ -318,101 +389,186 @@
             border: 1px solid var(--error);
         }
 
-        /* Responsive modifications */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .program-grid {
                 grid-template-columns: 1fr;
             }
-            .register-container {
-                padding: 30px 20px;
+            .form-row {
+                grid-template-columns: 1fr;
             }
-            .reg-header h1 {
-                font-size: 1.5rem;
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .register-container {
+                border: none;
+                border-radius: 0;
+            }
+            body {
+                padding: 0;
             }
         }
     </style>
-</head>
-<body>
 
     <div class="register-container">
-        <a href="index.html" class="back-home">← Back to Main Page</a>
-
-        <div class="reg-header">
-            <h1>Join Our Program</h1>
-            <p>August Technology Skill-Building (Kids & Teens)</p>
-        </div>
-
-        <div id="alertBox" class="alert-box"></div>
-
-        <form id="regForm">
-            <div class="form-group">
-                <label for="studentName">Student's Full Name</label>
-                <input type="text" id="studentName" class="form-control" placeholder="John Doe" required>
-            </div>
-
-            <div class="form-group">
-                <label for="studentAge">Age</label>
-                <input type="number" id="studentAge" class="form-control" min="5" max="19" placeholder="e.g. 12" required>
-            </div>
-
-            <div class="form-group">
-                <label>Select Program Pathway(s) <span style="font-weight: normal; color: #666;">(You can select multiple)</span></label>
-                <div class="program-grid">
-                    
-                    <div class="program-card" data-value="Digital Literacy Certification">
-                        <div class="select-badge"></div>
-                        <div class="icon-box">
-                            <svg viewBox="0 0 24 24"><path d="M20,18c1.1,0,1.99-0.9,1.99-2L22,6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></svg>
-                        </div>
-                        <h3 class="program-title">Digital Literacy Certification</h3>
-                        <p class="program-desc">Master essential workplace tools, computing fundamentals, and office productivity software.</p>
-                    </div>
-
-                    <div class="program-card" data-value="Diploma in Computer Application Package">
-                        <div class="select-badge"></div>
-                        <div class="icon-box">
-                            <svg viewBox="0 0 24 24"><path d="M19,3H5C3.9,3,3,3.9,3,5v14c0,1.1,0.9,2,2,2h14c1.1,0,2-0.9,2-2V5C21,3.9,20.1,3,19,3z M19,19H5V5h14V19z M17,12h-4V8h-2v4H7v2h4v4h2v-4h4V12z"/></svg>
-                        </div>
-                        <h3 class="program-title">Diploma in Computer Application Package</h3>
-                        <p class="program-desc">Learn Ms Word, Excel, PowerPoint, and Corel Draw.</p>
-                    </div>
-
-                    <div class="program-card" data-value="Master Typing Skills">
-                        <div class="select-badge"></div>
-                        <div class="icon-box">
-                            <svg viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M11,19.93C7.05,19.44,4,16.08,4,12c0-1,0.2-1.95,0.57-2.82L9,13.5v1c0,1.1,0.9,2,2,2V19.93z M18.57,16.57C18.13,15.66,17.15,15,16,15h-1v-3c0-0.55-0.45-1-1-1H9V9H7V7h2c0.55,0,1-0.45,1-1V5.5c2.48,0.76,4.5,2.78,5.26,5.26L14,12v2h2c1.1,0,2,0.9,2,2v0.57H18.57z"/></svg>
-                        </div>
-                        <h3 class="program-title">Master Typing Skills</h3>
-                        <p class="program-desc">At Adanehi Resources we help you master your typing skills, i.e. to type without looking at the keyboard with a typing speed of 30WPM.</p>
-                    </div>
-
-                    <div class="program-card" data-value="Web Design">
-                        <div class="select-badge"></div>
-                        <div class="icon-box">
-                            <svg viewBox="0 0 24 24"><path d="M12,17.27L18.18,21l-1.64-7.03L22,9.24l-7.19-0.61L12,2L9.19,8.63L2,9.24l5.46,4.73L5.82,21L12,17.27z"/></svg>
-                        </div>
-                        <h3 class="program-title">Web Design</h3>
-                        <p class="program-desc">At Adanehi Resources we off affordable Web Design classes. Requirements: A laptop, Smart Phone, together with an Internet service.</p>
-                    </div>
-
+        <div class="brand-banner">
+            <div class="brand-logo-area">
+                <div class="brand-logo-icon">AR</div>
+                <div class="brand-title">
+                    <h2>ADANEHI RESOURCES</h2>
+                    <span>Computer & Web Application Training</span>
                 </div>
             </div>
+            <div class="form-badge-header">Registration Form</div>
+        </div>
 
-            <div class="form-group">
-                <label for="parentName">Parent / Guardian Name</label>
-                <input type="text" id="parentName" class="form-control" placeholder="Guardian Name" required>
-            </div>
+        <div class="contact-strip">
+            <span>📍 Treasure Mall Plaza, Suite 110, Federal Housing, Gonin Gora, Kaduna State.</span>
+            <span>📞 07062589594</span>
+        </div>
 
-            <div class="form-group">
-                <label for="parentPhone">Parent Phone Number</label>
-                <input type="tel" id="parentPhone" class="form-control" placeholder="07062589594" required>
-            </div>
+        <div class="form-body-content">
+            <a href="index.html" class="back-home">← Back to Main Page</a>
 
-            <button type="submit" class="submit-btn">
-                <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.69 1.975 14.218.95 11.59.947c-5.444 0-9.867 4.373-9.87 9.802-.001 1.696.463 3.35 1.34 4.811L1.933 22.01l6.634-1.722c-1.536.837-3.111 1.258-4.72 1.259z"/></svg>
-                Complete Registration via WhatsApp
-            </button>
-        </form>
+            <div id="alertBox" class="alert-box"></div>
+
+            <form id="regForm">
+                <div class="section-header-box">Personal Information</div>
+
+                <div class="form-group full-width">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Enter full name" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="gender-group">
+                            <label class="radio-label"><input type="radio" name="gender" value="Male" required> Male</label>
+                            <label class="radio-label"><input type="radio" name="gender" value="Female"> Female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" class="form-control" placeholder="Street Address" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" class="form-control" placeholder="City" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" class="form-control" placeholder="State" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="lga">L.G.A.</label>
+                        <input type="text" id="lga" class="form-control" placeholder="Local Government Area">
+                    </div>
+                    <div class="form-group">
+                        <label for="nationality">Nationality</label>
+                        <input type="text" id="nationality" class="form-control" value="Nigerian">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" placeholder="07062589594" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="altPhone">Alternative Phone</label>
+                        <input type="tel" id="altPhone" class="form-control" placeholder="Optional">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="name@example.com">
+                    </div>
+                </div>
+
+                <div class="section-header-box">Program Information</div>
+
+                <div class="form-group full-width">
+                    <label>Program Applying For (Select One or More):</label>
+                    <div class="program-grid">
+                        
+                        <div class="program-card" data-value="Diploma in Computer Application Package">
+                            <div class="select-badge"></div>
+                            <div class="icon-box">
+                                <svg viewBox="0 0 24 24"><path d="M20,18c1.1,0,1.99-0.9,1.99-2L22,6c0-1.1-0.9-2-2-2H4C2.9,4,2,4.9,2,6v10c0,1.1,0.9,2,2,2H0v2h24v-2H20z M4,6h16v10H4V6z"/></svg>
+                            </div>
+                            <h3 class="program-title">Diploma in Computer Application</h3>
+                            <p class="program-desc">Ms Word, Excel, PowerPoint, and Corel Draw packages.</p>
+                        </div>
+
+                        <div class="program-card" data-value="Coding Classes">
+                            <div class="select-badge"></div>
+                            <div class="icon-box">
+                                <svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
+                            </div>
+                            <h3 class="program-title">Coding Classes</h3>
+                            <p class="program-desc">Structured coding lessons tailored for beginners and youth.</p>
+                        </div>
+
+                        <div class="program-card" data-value="Designing Websites">
+                            <div class="select-badge"></div>
+                            <div class="icon-box">
+                                <svg viewBox="0 0 24 24"><path d="M12,2C6.48,2,2,6.48,2,12s4.48,10,10,10s10-4.48,10-10S17.52,2,12,2z M11,19.93C7.05,19.44,4,16.08,4,12c0-1,0.2-1.95,0.57-2.82L9,13.5v1c0,1.1,0.9,2,2,2V19.93z M18.57,16.57C18.13,15.66,17.15,15,16,15h-1v-3c0-0.55-0.45-1-1-1H9V9H7V7h2c0.55,0,1-0.45,1-1V5.5c2.48,0.76,4.5,2.78,5.26,5.26L14,12v2h2c1.1,0,2,0.9,2,2v0.57H18.57z"/></svg>
+                            </div>
+                            <h3 class="program-title">Designing Websites</h3>
+                            <p class="program-desc">Learn website design and development foundations.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="section-header-box">Emergency Contact</div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emergencyName">Contact Name</label>
+                        <input type="text" id="emergencyName" class="form-control" placeholder="Guardian Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergencyRelation">Relationship</label>
+                        <input type="text" id="emergencyRelation" class="form-control" placeholder="e.g. Parent / Uncle">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="emergencyPhone">Phone Number</label>
+                        <input type="tel" id="emergencyPhone" class="form-control" placeholder="Phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergencyAddress">Address</label>
+                        <input type="text" id="emergencyAddress" class="form-control" placeholder="Address">
+                    </div>
+                </div>
+
+                <div class="section-header-box">Declaration</div>
+                <div class="declaration-box">
+                    I hereby declare that the information provided above is true and correct to the best of my knowledge. I understand the rules and regulations of <strong>ADANEHI RESOURCES</strong> and agree to abide by them.
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.966C16.69 1.975 14.218.95 11.59.947c-5.444 0-9.867 4.373-9.87 9.802-.001 1.696.463 3.35 1.34 4.811L1.933 22.01l6.634-1.722c-1.536.837-3.111 1.258-4.72 1.259z"/></svg>
+                    Complete Registration via WhatsApp
+                </button>
+            </form>
+        </div>
     </div>
 
     <script>
@@ -421,20 +577,16 @@
             const alertBox = document.getElementById("alertBox");
             const programCards = document.querySelectorAll(".program-card");
 
-            // Setup variables to store selected values
             let selectedPrograms = [];
 
-            // Card multi-select handler
             programCards.forEach(card => {
                 card.addEventListener("click", () => {
                     const val = card.getAttribute("data-value");
 
                     if (card.classList.contains("selected")) {
-                        // Deselect
                         card.classList.remove("selected");
                         selectedPrograms = selectedPrograms.filter(p => p !== val);
                     } else {
-                        // Select
                         card.classList.add("selected");
                         selectedPrograms.push(val);
                     }
@@ -442,63 +594,66 @@
             });
 
             form.addEventListener("submit", (event) => {
-                event.preventDefault(); // Prevents page reload
+                event.preventDefault(); 
 
-                // Retrieve form values
-                const sName = document.getElementById("studentName").value.trim();
-                const sAge = document.getElementById("studentAge").value.trim();
-                const pName = document.getElementById("parentName").value.trim();
-                const pPhone = document.getElementById("parentPhone").value.trim();
+                const fullName = document.getElementById("fullName").value.trim();
+                const dob = document.getElementById("dob").value.trim();
+                const genderEl = document.querySelector('input[name="gender"]:checked');
+                const gender = genderEl ? genderEl.value : "";
+                const address = document.getElementById("address").value.trim();
+                const city = document.getElementById("city").value.trim();
+                const state = document.getElementById("state").value.trim();
+                const lga = document.getElementById("lga").value.trim();
+                const phone = document.getElementById("phone").value.trim();
+                const altPhone = document.getElementById("altPhone").value.trim();
+                const email = document.getElementById("email").value.trim();
+                
+                const emName = document.getElementById("emergencyName").value.trim();
+                const emRelation = document.getElementById("emergencyRelation").value.trim();
+                const emPhone = document.getElementById("emergencyPhone").value.trim();
 
-                // Validate selection
                 if (selectedPrograms.length === 0) {
                     showAlert("Please select at least one Program Pathway before proceeding.", "alert-error");
                     return;
                 }
 
-                // Format friendly visual message list for WhatsApp
                 const programListString = selectedPrograms.map((prog, idx) => `  ${idx + 1}. ${prog}`).join("\n");
+                const whatsappTarget = "2347062589594"; 
 
-                // WhatsApp Target Number Configuration
-                const whatsappTarget = "2347062589594"; // Format target number with country code
-
-                // Construct text format
                 const messageText = 
-`📝 *NEW SUMMER PROGRAM REGISTRATION*
+`📝 *ADANEHI RESOURCES REGISTRATION FORM*
 
-👤 *Student Details:*
-• *Name:* ${sName}
-• *Age:* ${sAge} years
+👤 *Personal Information:*
+• *Full Name:* ${fullName}
+• *DOB:* ${dob} (${gender})
+• *Address:* ${address}, ${city}, ${state} (${lga})
+• *Phone:* ${phone} ${altPhone ? `/ Alt: ${altPhone}` : ''}
+• *Email:* ${email || 'N/A'}
 
 🏢 *Selected Program(s):*
 ${programListString}
 
-👪 *Parent/Guardian Details:*
-• *Name:* ${pName}
-• *Phone:* ${pPhone}
+🚨 *Emergency Contact:*
+• *Name:* ${emName} (${emRelation || 'Contact'})
+• *Phone:* ${emPhone}
 
 ---
-_Sent via Adanehi Resources Registration Portal_`;
+_Submitted digitally via Adanehi Resources Portal_`;
 
-                // URL Encode text safely
                 const encodedText = encodeURIComponent(messageText);
                 const whatsappUrl = `https://wa.me/${whatsappTarget}?text=${encodedText}`;
 
-                // Show success status indicator
-                showAlert(`Success! Opening WhatsApp to complete registration for ${sName}...`, "alert-success");
+                showAlert(`Success! Opening WhatsApp to forward your application for ${fullName}...`, "alert-success");
 
-                // Clear fields and selection style states
                 form.reset();
                 programCards.forEach(c => c.classList.remove("selected"));
                 selectedPrograms = [];
 
-                // Redirect user to WhatsApp in a new tab
                 setTimeout(() => {
                     window.open(whatsappUrl, "_blank");
                 }, 1000);
             });
 
-            // Helper function to show messages beautifully
             function showAlert(message, className) {
                 alertBox.textContent = message;
                 alertBox.className = "alert-box " + className;
