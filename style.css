@@ -27,6 +27,7 @@ body {
   background-color: var(--light);
   color: var(--text);
   line-height: 1.6;
+  padding-top: 70px; /* Pushes content down so fixed nav doesn't overlap header */
 }
 
 /* ==========================================
@@ -42,14 +43,23 @@ nav {
   left: 0;
   z-index: 1000;
   display: flex;
-  justify-content: flex-end; /* Aligns menu items to the right */
+  justify-content: space-between; /* Space out brand name and nav links */
   align-items: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.nav-brand {
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .nav-container {
   display: flex;
   gap: 25px;
+  align-items: center;
 }
 
 .nav-link {
@@ -90,7 +100,7 @@ header {
   background: linear-gradient(135deg, #ffffff 0%, #fff2ec 100%);
   border-bottom: 4px solid var(--primary);
   color: var(--dark);
-  padding: 180px 5% 100px 5%; /* Top padding leaves space for fixed nav */
+  padding: 100px 5% 80px 5%; /* Well-proportioned vertical spacing */
   text-align: center;
 }
 
@@ -103,38 +113,40 @@ header {
 .brand-sub {
   display: block;
   width: 100%;
-  font-size: 2.5rem;             
+  font-size: 2.2rem;             
   font-weight: 900;              
   color: var(--primary);         
-  letter-spacing: 6px;           
+  letter-spacing: 4px;           
   text-transform: uppercase;     
-  margin-bottom: 25px;           
-  padding: 15px 0;
+  margin-bottom: 20px;           
+  padding: 12px 0;
   border-top: 2px solid rgba(255, 102, 0, 0.2);    
   border-bottom: 2px solid rgba(255, 102, 0, 0.2); 
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);      
 }
 
 .logo {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   color: var(--dark);
+  line-height: 1.2;
 }
 
 .summer-title {
-  font-size: 1.8rem;
-  font-weight: 300;
-  opacity: 0.9;
-  margin-bottom: 25px;
+  font-size: 1.6rem;
+  font-weight: 400;
+  margin-bottom: 20px;
   color: #555555;
 }
 
 .hero-desc {
   font-size: 1.1rem;
-  opacity: 0.8;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
   color: var(--text-muted);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .enroll-btn {
@@ -423,14 +435,14 @@ footer p {
 
   .nav-container {
     position: fixed;
-    top: 51px; 
+    top: 60px; 
     right: -100%; 
     width: 250px;
-    height: calc(100vh - 51px);
+    height: calc(100vh - 60px);
     background-color: var(--white);
     flex-direction: column;
     padding: 40px 20px;
-    gap: 30px;
+    gap: 20px;
     transition: right 0.4s ease-in-out;
     box-shadow: -5px 0 15px rgba(0,0,0,0.1);
     border-left: 2px solid var(--primary);
@@ -441,19 +453,25 @@ footer p {
   }
 
   .nav-link {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--dark);
     border-bottom: 1px solid rgba(0,0,0,0.05);
     padding-bottom: 10px;
+    width: 100%;
   }
 
   /* Responsive Banner scaling for mobile viewports */
   .brand-sub {
-    font-size: 1.6rem;   
-    letter-spacing: 3px; 
+    font-size: 1.4rem;   
+    letter-spacing: 2px; 
+    padding: 8px 0;
   }
 
   .logo {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
+  }
+
+  .summer-title {
+    font-size: 1.3rem;
   }
 }
