@@ -11,8 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Close drawer immediately when a navigation link is clicked
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
+            link.addEventListener('click', (event) => {
                 navMenu.classList.remove('active');
+
+                // Check if the clicked link is meant to open about.html
+                // (Assuming your About Us link text or href targets "about.html")
+                const href = link.getAttribute('href');
+                if (link.textContent.includes('About Us') || href === 'about.html') {
+                    event.preventDefault();
+                    window.location.href = 'about.html';
+                }
             });
         });
 
@@ -24,5 +32,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         console.error("Navigation drawer elements missing. Check ID configurations.");
+    }
+
+    // --- Image Slider Automatic Transition (Every 4 seconds) ---
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+
+        if (slides.length > 0) {
+            // Hide all slides
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+
+            slideIndex++;
+            if (slideIndex > slides.length) {
+                slideIndex = 1;
+            }
+
+            // Remove active status from dots
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+
+            // Display current slide and activate corresponding dot
+            slides[slideIndex - 1].style.display = "block";
+            if (dots.length > 0) {
+                dots[slideIndex - 1].className += " active";
+            }
+
+            // Change image every 4 seconds (4000 milliseconds)
+            setTimeout(showSlides, 4000);
+        }
     }
 });
